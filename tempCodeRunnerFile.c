@@ -1,1 +1,1 @@
-printf("\n");
+rintarray(A, n);

@@ -66,7 +66,7 @@ int main()
     int A[] = {9, 1, 4, 14, 4, 15, 6,89};
     int n = 8;
     printArray(A, n);
-    mergeSort(A, 0, 7);
+    mergeSort(A, 0, n-1);
     printArray(A, n);
     return 0;
 }
