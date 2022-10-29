@@ -1,1 +1,1 @@
-rintarray(A, n);
+mp;

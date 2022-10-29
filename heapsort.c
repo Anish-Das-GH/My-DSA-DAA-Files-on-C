@@ -8,13 +8,14 @@ void Printarray(int* A, int n)
     }
 }
  
-void heapify(int* arr, int n, int i)
+void heapify(int arr[], int n, int i)
 {
     // store largest as the root element
     int largest = i;
  
     int left = 2 * i + 1;
     int right  = 2 * i + 2;
+ 
  
     // now check whether the right and left right is larger than the root or not
     if (left < n && arr[left] > arr[largest])
@@ -41,7 +42,7 @@ void heapify(int* arr, int n, int i)
  
  
 /* sorts the given array of n size */
-void heapsort(int* arr, int n)
+void heapsort(int arr[], int n)
 {
     // build the binary max heap
     for (int i = n / 2 - 1; i >= 0; i--)
