@@ -31,9 +31,6 @@ struct node* sortedArrayToBST(int arr[], int start, int end)
  
     return root;
 }
-
- 
-
 void preOrder(struct node* node)
 {
     if (node == NULL)
