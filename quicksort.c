@@ -1,15 +1,4 @@
 #include<stdio.h>
-void arraytraversal(int n,int *A)
-{
-    int i;
-    for ( i = 0; i < n; i++)
-    {
-       printf(" %d ",A[i]);
-    }
-    printf("\n");
-    
-
-}
 
 int partition(int A[],int low,int high)
 {
@@ -63,12 +52,22 @@ void quickSort(int A[], int low, int high)
 int main()
 {
     
-    int A[] = {9, 4, 4, 8, 7, 5, 6};
-  int n;
-    // int n = 9;
-    n =7;
-  
+    int A[10];
+    int n;
+    int i;
+    printf("Enter the size of array : ");
+    scanf("%d",&n);
+    printf("Enter elements of the array : ");
+    for ( i = 0; i < n; i++)
+    {
+        scanf("%d",&A[i]);
+    }
     quickSort(A, 0, n - 1);
-    arraytraversal(n,A);
-    return 0;
+    for ( i = 0; i < n; i++)
+    {
+       printf(" %d ",A[i]);
+    }
+    printf("\n");
+    
+
 }

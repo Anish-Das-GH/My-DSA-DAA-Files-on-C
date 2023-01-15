@@ -1,69 +1,59 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-void printArray(int *A, int n)
+struct node{
+    struct node* left;
+    struct node* right;
+    int data;
+};
+
+struct node* createroot(int data)
 {
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", A[i]);
-    }
-    printf("\n");
+    struct node* root;
+    root = (struct node*)malloc(sizeof(struct node));
+    root->data=data;
+    root->left=NULL;
+    root->right=NULL;
+    return root;
 }
 
-void Heapify(int A[],int n,int i)
+int height(struct node* root)
 {
-    int largest = i;
-    int left = 2*i+1;
-    int right = 2*i+2;
-
-    if (left<n && A[left]>A[largest])
+    if(root==NULL)
     {
-        largest = left;
+        return 0;
     }
-
-     if (right<n && A[right]>A[largest])
+    else
     {
-        largest = right;
-    }
-
-    if(largest != i)
-    {
-        int temp = A[largest];
-        A[largest] = A[i];
-        A[i] = temp;
-        
-        Heapify(A,n,largest);
-    }
-    
-    
-}
-
-void Heapsort(int A[],int n)
-{
-    int i;
-    int temp;
-    for ( i = n/2-1; i >= 0; i--)
-    {
-        Heapify(A,n,i);
-    }
-
-    for ( i = n-1; i >= 0; i--)
-    {
-        temp = A[0];
-        A[0] = A[i];
-        A[i] = temp;
-
-        Heapify(A,i,0);
+        int l = height(root->left);
+        int r = height(root->right);
+        if(l>r)
+        {
+           return l+1;
+        }
+        else
+           return  r+1;
     }
 }
 
 int main()
 {
-    int arr[] = { 10, 30, 5, 63, 22, 12, 56, 33 };
-    int n = 8;
- 
+    struct node* p=createroot(10);
+    struct node* p1=createroot(8);
+    struct node* p2=createroot(16);
+    struct node* p3=createroot(5);
+    struct node* p4=createroot(11);
+    struct node* p5=createroot(15);
+    struct node* p6=createroot(40);
 
- 
-    Heapsort(arr, n);
-    printArray(arr, n);
- 
+    p->left = p1;
+    p->right = p2;
+    p1 -> left = p3;
+    p1 -> right = p4;
+    p2 -> left = p5;
+    p2 -> right = p6;
+    
+    printf("\n Height of tree is %d", height(p));
+  
+    return 0;
 }

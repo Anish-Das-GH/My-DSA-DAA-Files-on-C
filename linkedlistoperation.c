@@ -1,4 +1,4 @@
-#include<stdio.h>
+ #include<stdio.h>
 #include<stdlib.h>
 
 struct Node{
@@ -21,6 +21,7 @@ struct Node * insertAtFirst(struct Node *head, int data){
     ptr->data = data;
 
     ptr->next = head;
+    head = ptr;
     return ptr; 
 }
 

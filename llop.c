@@ -65,6 +65,28 @@ struct node* delbeg(struct node* head)
     return head;
     
 }
+struct node* delatIndex(struct node*head, int index){
+    struct node * p= head;
+    struct node * q = head->next;
+    for(int i=0;i<index-1;i++){
+        p=p->next;
+        q=q->next;
+    }
+    p->next=q->next;
+    free(q);
+    return head;
+}
+struct node* delatEnd(struct node*head){
+    struct node * p= head;
+    struct node * q = head->next;
+    while(q->next!=NULL){
+      p=p->next;
+        q=q->next;
+    }
+    p->next=NULL;
+    free(q);
+    return head;
+}
 
 int main()
 {
@@ -88,7 +110,9 @@ third->next = NULL;
 // head = insertbeg(head,90);
 // head = insertend(head,69);
 // head = insertindex(head,108,1);
-head = delbeg(head);
+// head = delbeg(head);
+// head=delatFirst(head);
+// head=delatIndex(head,2);
 traversal(head);
 
     return 0;
