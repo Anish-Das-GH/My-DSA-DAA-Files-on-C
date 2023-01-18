@@ -22,7 +22,7 @@ struct Node * insertAtFirst(struct Node *head, int data){
 
     ptr->next = head;
     head = ptr;
-    return ptr; 
+    return head; 
 }
 
 // Case 2
