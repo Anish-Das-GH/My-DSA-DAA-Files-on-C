@@ -21,7 +21,8 @@ struct node* insertbeg(struct node* head,int data)
     struct node* ptr = (struct node*)malloc(sizeof(struct node));
     ptr -> next = head;
     ptr -> data = data;
-    return ptr;
+    head = ptr;
+    return ptr; 
 
 }
 
@@ -44,6 +45,11 @@ struct node* insertindex(struct node* head,int data,int index)
 { struct node* ptr = (struct node*)malloc(sizeof(struct node));
   struct node* p = head;
   ptr ->data = data;
+
+
+
+
+  
   int i=0;
   while(i!=index-1)
   {
