@@ -1,1 +1,4 @@
-int n;
+else
+        {
+            printf("Element not found");
+        }
