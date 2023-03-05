@@ -8,21 +8,20 @@ void printArray(int* A, int n){
     printf("\n");
 }
 
-void selectionSort(int *A, int n){
-    int indexOfMin, temp;
-    printf("Running Selection sort...\n");
+void selectionSort(int A[], int n){
+    int min, temp;
     for (int i = 0; i < n-1; i++)
     {
-        indexOfMin = i;
+        min = i;
         for (int j = i+1; j < n; j++)
         {
-            if(A[j] < A[indexOfMin]){
-                indexOfMin = j;
+            if(A[j] < A[min]){
+                min = j;
             }
         }
         temp = A[i];
-        A[i] = A[indexOfMin];
-        A[indexOfMin] = temp;
+        A[i] = A[min];
+        A[min] = temp;
     }
 }
 
