@@ -1,102 +1,67 @@
 #include <stdio.h>
-#define MAX 100
-int min(int a,int b)
+void main()
 {
-    if(a<b)
-    {
-        return a;
-    }
-    else
-    {
-        return b;
-    }
-}
-int main()
-{
-    int profit[MAX],n,job[MAX],deadline[MAX],i,j,temp,temp1,temp2;
-    printf("Enter no of jobs : ");
-    scanf("%d",&n);
-    printf("Enter job id : ");
-    for ( i = 1; i <= n; i++)
-    {
-        scanf("%d",&job[i]);
-    }
-     printf("Enter profits : ");
-    for ( i = 1; i <= n; i++)
-    {
-        scanf("%d",&profit[i]);
-    }
-    
-     printf("Enter Deadlines : ");
-    for ( i = 1; i <= n; i++)
-    {
-        scanf("%d",&deadline[i]);
-    }
-    
-    // Sort the Profits
+	int i = 0, j = 0, temp = 0, dmax = 0, k = 0, tp = 0, n = 0;
+	printf("Enter number of jobs: ");
+	scanf("%d", &n);
+	int job[n], profit[n], deadline[n];
+	printf("Enter the job ID ,profit and their dedline:\n");
+	for (i = 0; i < n; i++)
+		scanf("%d %d %d", &job[i], &profit[i], &deadline[i]);
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n - i - 1; j++)
+		{
+			if (profit[j] < profit[j + 1])
+			{
+				temp = profit[j + 1];
+				profit[j + 1] = profit[j];
+				profit[j] = temp;
 
-    for ( i = 1; i <= n; i++)
-    {
-        for ( j = i+1; j <= n; j++)
-        {
-            if (profit[i]>profit[j])
-            {
-                temp = profit[i];
-            profit[i] = profit[j];
-            profit[j] = temp;
+				temp = job[j + 1];
+				job[j + 1] = job[j];
+				job[j] = temp;
 
-            temp1 = deadline[i];
-            deadline[i] = deadline[j];
-            deadline[j] = temp1;
+				temp = deadline[j + 1];
+				deadline[j + 1] = deadline[j];
+				deadline[j] = temp;
+			}
+		}
+	}
+	printf("Sorting job based on profit are:\nJob:\t");
+	for (i = 0; i < n; i++)
+		printf("\t%d", job[i]);
+	printf("\nProfit:\t");
+	for (i = 0; i < n; i++)
+		printf("\t%d", profit[i]);
+	printf("\nDeadline:");
+	for (i = 0; i < n; i++)
+		printf("\t%d", deadline[i]);
 
-            temp2 = job[i];
-            job[i] = job[j];
-            job[j] = temp2;
-            }
-            
-            
-        }
-        
-    }
-
-    printf("Sorted Profits : ");
-    for ( i = 1; i <= n; i++)
-    {
-        printf(" %d ",profit[i]);
-    }
-    int max = 0;
-    for ( i = 1; i <= n; i++)
-    {
-        if(deadline[i]>max)
-        {
-            max = deadline[i];
-        }
-    }
-    printf("\n max deadline : %d ",max);
-    
-    int timeslot[max];
-    for(i=1;i<=max;i++)
-    {
-        timeslot[i]=-1;
-    }
-    int k;
-    int totalprofit = 0;
-    for(i=1;i<=n;i++)
-    {
-        k = min(max,deadline[i]);
-        while (k>=1)
-        {
-            timeslot[k] = job[i];
-            totalprofit = totalprofit + profit[i];
-            break;
-        }
-        k = k-1;
-        
-    }
-    printf("The total profit is  : %d ",totalprofit);
-    for ( i = 1; i <= max; i++)
-    {
-        printf("%d",timeslot[i]);
-    }
-    return 0;
+	for (i = 0; i < n; i++)
+	{
+		if (deadline[i] > dmax)
+			dmax = deadline[i];
+	}
+	int timeslot[dmax];
+	for (i = 0; i < dmax; i++)
+		timeslot[i] = -1;
+	for (i = 0; i < n; i++)
+	{
+		k = deadline[i];
+		while (k >= 0)
+		{
+			if (timeslot[k] == -1)
+			{
+				timeslot[k] = job[i];
+				tp += profit[i];
+				break;
+			}
+			k -= 1;
+		}
+	}
+	printf("\nJob vector are :");
+	for (i = 0; i < dmax; i++)
+		printf("%d ", timeslot[i]);
+	printf("\nMax. Profit: %d", tp);
 }
