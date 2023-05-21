@@ -9,3 +9,10 @@ Major Topics used -
 5. Binary Search Tree
 6. Graph Traversal
 7. Sparse Matrix
+8. Prim & Kruskal
+9. NQueens Problem
+10. Floyd Warshall
+11. Graph Coloring
+12. Knapsack Greedy
+13. Job Sequencing
+
