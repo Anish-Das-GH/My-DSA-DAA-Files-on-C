@@ -13,3 +13,6 @@ Major Topics used -
 9. NQueens Problem
 10. Floyd Warshall
 11. Graph Coloring
+12. Knapsack Greedy
+13. Job Sequencing
+
